@@ -1,0 +1,10 @@
+C:\Users\S-55\source\repos\NesimoProyecto\NesimoProyecto\bin\Debug\NesimoProyecto.exe.config
+C:\Users\S-55\source\repos\NesimoProyecto\NesimoProyecto\bin\Debug\NesimoProyecto.exe
+C:\Users\S-55\source\repos\NesimoProyecto\NesimoProyecto\bin\Debug\NesimoProyecto.pdb
+C:\Users\S-55\source\repos\NesimoProyecto\NesimoProyecto\obj\Debug\NesimoProyecto.csprojResolveAssemblyReference.cache
+C:\Users\S-55\source\repos\NesimoProyecto\NesimoProyecto\obj\Debug\NesimoProyecto.Form1.resources
+C:\Users\S-55\source\repos\NesimoProyecto\NesimoProyecto\obj\Debug\NesimoProyecto.Properties.Resources.resources
+C:\Users\S-55\source\repos\NesimoProyecto\NesimoProyecto\obj\Debug\NesimoProyecto.csproj.GenerateResource.Cache
+C:\Users\S-55\source\repos\NesimoProyecto\NesimoProyecto\obj\Debug\NesimoProyecto.csproj.CoreCompileInputs.cache
+C:\Users\S-55\source\repos\NesimoProyecto\NesimoProyecto\obj\Debug\NesimoProyecto.exe
+C:\Users\S-55\source\repos\NesimoProyecto\NesimoProyecto\obj\Debug\NesimoProyecto.pdb
