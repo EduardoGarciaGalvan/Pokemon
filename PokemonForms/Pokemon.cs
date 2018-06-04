@@ -15,7 +15,7 @@ namespace PokemonForms
         int defense;
         int currentAttack;
         int currentDefense;
-        int Velocity;
+        int velocity;
         int level;
         PokemonHelper.PokemonType type;
         IMove[] moves;
@@ -99,7 +99,7 @@ namespace PokemonForms
             maxHP = hpBase;
             attack = attackBase;
             defense = defenseBase;
-            Velocity = velocityBase;
+            velocity = velocityBase;
             moves = move;
         }
 
@@ -110,13 +110,24 @@ namespace PokemonForms
             this.maxHP = other.maxHP;
             this.attack = other.attack;
             this.defense = other.defense;
-            this.Velocity = other.velocity;
+            this.velocity = other.velocity;
             this.moves = other.moves;
         }
 
-        public static Pokemon GeneratePokemon(int PokedexIndex)
+        public static Pokemon GeneratePokemon(int pokedexIndex, int level)
         {
-            return new Pokemon(pokedex [PokedexIndex]);
+            var pkm =  new Pokemon(pokedex[pokedexIndex]);
+            pkm.level = level;
+            CalculateStats(pkm);
+            return pkm;
+        }
+
+        private static void CalculateStats(Pokemon pokemon)
+        {
+            pokemon.maxHP = (int)Math.Floor((2 * pokemon.maxHP) * pokemon.level / 100f) + pokemon.level + 10;
+            pokemon.attack = (int)Math.Floor((2 * pokemon.attack) * pokemon.level / 100f) + 5;
+            pokemon.defense = (int)Math.Floor((2 * pokemon.defense) * pokemon.level / 100f) + 5;
+            pokemon.velocity = (int)Math.Floor((2 * pokemon.velocity) * pokemon.level / 100f) + 5;
         }
 
         public IMove GetMove(int index)
