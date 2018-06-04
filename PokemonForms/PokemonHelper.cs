@@ -26,7 +26,7 @@ namespace PokemonForms
             return 1;
         }
 
-        public static void DoDamage(Pokemon attackPkm, Pokemon defendPkm, IMove move)
+        public static int DoDamage(Pokemon attackPkm, Pokemon defendPkm, IMove move)
         {
             double Damage = (((double)2 * attackPkm.Level / 5) * move.Power * ((double)attackPkm.CurrentAttack / defendPkm.CurrentDefense) / 50) + 2;
             Damage *= new Random().NextDouble() * 0.25 + 0.85; // Random
@@ -34,7 +34,7 @@ namespace PokemonForms
             Damage *= Effective(move.Type, defendPkm.Type); //Type Effectiveness
 
             defendPkm.CurrentHP -= (int)Damage;//Eduardo did dis
-
+            return (int)Damage;
         }
     }
 }

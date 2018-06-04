@@ -13,13 +13,19 @@ namespace PokemonForms
     public partial class Form1 : Form
     {
         clsResize _form_resize;
+        Pokemon ThisPokemon=null;
+        Pokemon FoePokemon=null;
 
         public Form1()
         {
             InitializeComponent();
+            
+            ThisPokemon = Pokemon.GeneratePokemon(0);
+            FoePokemon=Pokemon.GeneratePokemon(1);
 
             _form_resize = new clsResize(this);
             this.Resize += new EventHandler(_Resize);
+
         }
 
         private void _Resize(object sender, EventArgs e)
@@ -38,7 +44,7 @@ namespace PokemonForms
 
         private void btnAttack_Click(object sender, EventArgs e)
         {
-            barFoePkm.Value -= 10;
+            ThisPokemon.PerformMove(0, FoePokemon);
 
             label1.Text = barMyPkm.Maximum.ToString();
             lblMyPkmLevel.Text = barMyPkm.Value.ToString();

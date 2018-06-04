@@ -8,3 +8,8 @@ C:\Users\S-55\source\repos\PokemonForms\PokemonForms\obj\Debug\PokemonForms.cspr
 C:\Users\S-55\source\repos\PokemonForms\PokemonForms\obj\Debug\NesimoProyecto.exe
 C:\Users\S-55\source\repos\PokemonForms\PokemonForms\obj\Debug\NesimoProyecto.pdb
 C:\Users\S-55\source\repos\PokemonForms\PokemonForms\obj\Debug\PokemonForms.Form1.resources
+C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\PokemonForms.csprojResolveAssemblyReference.cache
+C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\PokemonForms.Form1.resources
+C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\NesimoProyecto.Properties.Resources.resources
+C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\PokemonForms.csproj.GenerateResource.cache
+C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\PokemonForms.csproj.CoreCompileInputs.cache
