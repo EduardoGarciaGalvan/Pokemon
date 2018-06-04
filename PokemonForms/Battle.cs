@@ -20,8 +20,8 @@ namespace PokemonForms
         {
             InitializeComponent();
             
-            ThisPokemon = Pokemon.GeneratePokemon(0);
-            FoePokemon=Pokemon.GeneratePokemon(1);
+            ThisPokemon = Pokemon.GeneratePokemon(0, 100);
+            FoePokemon=Pokemon.GeneratePokemon(1, 100);
 
             _form_resize = new clsResize(this);
             this.Resize += new EventHandler(_Resize);

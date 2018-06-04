@@ -24,7 +24,7 @@ namespace PokemonForms
         }
     }
 
-    public class FlashCannon:IMove
+    public class FlashCannon : IMove
     {
         public PokemonHelper.PokemonType Type { get => PokemonHelper.PokemonType.Steel; }
         public int Power { get => 80; }
@@ -38,7 +38,7 @@ namespace PokemonForms
         }
     }
 
-    public class TakeDown:IMove
+    public class TakeDown : IMove
     {
         public PokemonHelper.PokemonType Type { get => PokemonHelper.PokemonType.Normal; }
         public int Power { get => 90; }
@@ -46,7 +46,7 @@ namespace PokemonForms
         {
             int damage;
             damage = PokemonHelper.DoDamage(ThisPkm, FoePkm, this);
-            ThisPkm.CurrentHP -= damage/4;
+            ThisPkm.CurrentHP -= damage / 4;
         }
     }
 }
