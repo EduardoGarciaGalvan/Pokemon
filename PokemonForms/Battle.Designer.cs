@@ -39,8 +39,8 @@
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.barMyPkm = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblMaxHP = new System.Windows.Forms.Label();
+            this.lblCurrentHP = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRun = new System.Windows.Forms.Button();
@@ -120,7 +120,7 @@
             // 
             this.picFoePkm.BackColor = System.Drawing.Color.Transparent;
             this.picFoePkm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picFoePkm.Image = ((System.Drawing.Image)(resources.GetObject("picFoePkm.Image")));
+            this.picFoePkm.Image = global::PokemonForms.Properties.Resources.Charizard_XY_variocolor1;
             this.picFoePkm.Location = new System.Drawing.Point(58, 9);
             this.picFoePkm.Name = "picFoePkm";
             this.picFoePkm.Size = new System.Drawing.Size(264, 244);
@@ -218,7 +218,6 @@
             this.barMyPkm.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.barMyPkm.TabIndex = 4;
             this.barMyPkm.Value = 100;
-            this.barMyPkm.Click += new System.EventHandler(this.barMyPkm_Click);
             // 
             // tableLayoutPanel17
             // 
@@ -227,8 +226,8 @@
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.23546F));
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.12742F));
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.63435F));
-            this.tableLayoutPanel17.Controls.Add(this.label1, 2, 0);
-            this.tableLayoutPanel17.Controls.Add(this.label4, 1, 0);
+            this.tableLayoutPanel17.Controls.Add(this.lblMaxHP, 2, 0);
+            this.tableLayoutPanel17.Controls.Add(this.lblCurrentHP, 1, 0);
             this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 88);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
@@ -237,33 +236,33 @@
             this.tableLayoutPanel17.Size = new System.Drawing.Size(405, 30);
             this.tableLayoutPanel17.TabIndex = 2;
             // 
-            // label1
+            // lblMaxHP
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift", 12F);
-            this.label1.Location = new System.Drawing.Point(302, 0);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(51, 30);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "999";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMaxHP.AutoSize = true;
+            this.lblMaxHP.BackColor = System.Drawing.Color.Transparent;
+            this.lblMaxHP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMaxHP.Font = new System.Drawing.Font("Bahnschrift", 12F);
+            this.lblMaxHP.Location = new System.Drawing.Point(302, 0);
+            this.lblMaxHP.Name = "lblMaxHP";
+            this.lblMaxHP.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblMaxHP.Size = new System.Drawing.Size(51, 30);
+            this.lblMaxHP.TabIndex = 16;
+            this.lblMaxHP.Text = "999";
+            this.lblMaxHP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // lblCurrentHP
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Bahnschrift", 12F);
-            this.label4.Location = new System.Drawing.Point(241, 0);
-            this.label4.Name = "label4";
-            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label4.Size = new System.Drawing.Size(55, 30);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "999";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCurrentHP.AutoSize = true;
+            this.lblCurrentHP.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurrentHP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCurrentHP.Font = new System.Drawing.Font("Bahnschrift", 12F);
+            this.lblCurrentHP.Location = new System.Drawing.Point(241, 0);
+            this.lblCurrentHP.Name = "lblCurrentHP";
+            this.lblCurrentHP.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblCurrentHP.Size = new System.Drawing.Size(55, 30);
+            this.lblCurrentHP.TabIndex = 17;
+            this.lblCurrentHP.Text = "999";
+            this.lblCurrentHP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
             // 
@@ -310,6 +309,7 @@
             this.btnRun.TabIndex = 18;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.BtnRun_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -338,6 +338,7 @@
             this.btnHeal.TabIndex = 2;
             this.btnHeal.Text = "Heal";
             this.btnHeal.UseVisualStyleBackColor = true;
+            this.btnHeal.Click += new System.EventHandler(this.BtnHeal_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -366,6 +367,7 @@
             this.btnDefender.TabIndex = 1;
             this.btnDefender.Text = "Defender";
             this.btnDefender.UseVisualStyleBackColor = true;
+            this.btnDefender.Click += new System.EventHandler(this.BtnDefender_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -394,7 +396,7 @@
             this.btnAttack.TabIndex = 0;
             this.btnAttack.Text = "Attack";
             this.btnAttack.UseVisualStyleBackColor = true;
-            this.btnAttack.Click += new System.EventHandler(this.btnAttack_Click);
+            this.btnAttack.Click += new System.EventHandler(this.BtnAttack_Click);
             // 
             // tableLayoutPanel9
             // 
@@ -432,7 +434,7 @@
             // 
             this.picMyPkm.BackColor = System.Drawing.Color.Transparent;
             this.picMyPkm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picMyPkm.Image = ((System.Drawing.Image)(resources.GetObject("picMyPkm.Image")));
+            this.picMyPkm.Image = global::PokemonForms.Properties.Resources.Charizard_Back_Shiny_XY1;
             this.picMyPkm.Location = new System.Drawing.Point(57, 28);
             this.picMyPkm.Name = "picMyPkm";
             this.picMyPkm.Size = new System.Drawing.Size(261, 227);
@@ -630,8 +632,8 @@
         private System.Windows.Forms.Label lblMyPkmLevel;
         private System.Windows.Forms.Label lblMyPkm;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblMaxHP;
+        private System.Windows.Forms.Label lblCurrentHP;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnRun;

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{45FB39A4-D0C6-4E2D-ACE5-70555CCCB433}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>NesimoProyecto</RootNamespace>
-    <AssemblyName>NesimoProyecto</AssemblyName>
+    <RootNamespace>PokemonForms</RootNamespace>
+    <AssemblyName>PokemonForms</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -68,6 +68,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -81,6 +82,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\Charizard_Back_Shiny_XY.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\Charizard_XY_variocolor.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\Blastoise_XY.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\BlastoiseBack_XY.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\Venusaur_XY.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\Venusaur_Back_XY.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

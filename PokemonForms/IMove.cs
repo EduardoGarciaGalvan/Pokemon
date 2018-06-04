@@ -31,9 +31,10 @@ namespace PokemonForms
         public void PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
         {
             PokemonHelper.DoDamage(ThisPkm, FoePkm, this);
-            if(new Random().Next(0,9) == 0)
+            if(new Random().Next(0,10) == 0)
             {
-                FoePkm.CurrentDefense -= 1;
+                if(FoePkm.CurrentDefense > -6)
+                    FoePkm.CurrentDefense--;
             }
         }
     }
@@ -47,6 +48,38 @@ namespace PokemonForms
             int damage;
             damage = PokemonHelper.DoDamage(ThisPkm, FoePkm, this);
             ThisPkm.CurrentHP -= damage / 4;
+        }
+    }
+
+    public class Growl : IMove
+    {
+        public PokemonHelper.PokemonType Type { get => PokemonHelper.PokemonType.Normal; }
+        public int Power { get => 0; }
+        public void PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
+        {
+            if (FoePkm.CurrentAttack > -6)
+                FoePkm.CurrentAttack--;
+        }
+    }
+
+    public class Withdraw : IMove
+    {
+        public PokemonHelper.PokemonType Type { get => PokemonHelper.PokemonType.Water; }
+        public int Power { get => 0; }
+        public void PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
+        {
+            if (ThisPkm.CurrentDefense < 6)
+                ThisPkm.CurrentDefense++;
+        }
+    }
+
+    public class SleepPowder : IMove
+    {
+        public PokemonHelper.PokemonType Type { get => PokemonHelper.PokemonType.Grass; }
+        public int Power { get => 0; }
+        public void PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
+        {
+            FoePkm.sleep = true;
         }
     }
 }

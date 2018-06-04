@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Drawing;
+using PokemonForms.Properties;
 
 namespace PokemonForms
 {
@@ -15,16 +18,28 @@ namespace PokemonForms
         int defense;
         int currentAttack;
         int currentDefense;
-        int velocity;
+        int speed;
+        int currentSpeed;
         int level;
         PokemonHelper.PokemonType type;
         IMove[] moves;
+
+        Image frontImage;
+        Image backImage;
+
+        ProgressBar progressBar;
+        Label hpLabel;
+
+        public bool sleep = false;
         
         private  static readonly Pokemon [] pokedex = new Pokemon []
          {
-             new Pokemon ("Charizard" , PokemonHelper.PokemonType.Fire, 78, 84, 78, 100, new IMove[]{new Slash()} ),
-             new Pokemon ("Blastoise" , PokemonHelper.PokemonType.Water, 79, 83, 100, 78, new IMove[]{new FlashCannon()} ),
-             new Pokemon ("Venosaur" , PokemonHelper.PokemonType.Grass, 80, 82, 83, 80, new IMove[]{new TakeDown()} )
+             new Pokemon ("Charizard" , PokemonHelper.PokemonType.Fire, 78, 84, 78, 100, 
+                 new IMove[]{new Slash(), new Growl()}, Resources.Charizard_XY_variocolor1, Resources.Charizard_Back_Shiny_XY1),
+             new Pokemon ("Blastoise" , PokemonHelper.PokemonType.Water, 79, 83, 100, 78, 
+                 new IMove[]{new FlashCannon(), new Withdraw()}, Resources.Blastoise_XY, Resources.BlastoiseBack_XY ),
+             new Pokemon ("Venosaur" , PokemonHelper.PokemonType.Grass, 80, 82, 83, 80, 
+                 new IMove[]{new TakeDown(), new SleepPowder()}, Resources.Venusaur_XY, Resources.Venusaur_Back_XY )
          };
 
         public string Name
@@ -42,23 +57,36 @@ namespace PokemonForms
                 {
                     currentHP = 0;
                 }
+                else if(value > maxHP)
+                {
+                    currentHP = maxHP;
+                }
                 else
                 {
                     currentHP = value; //Eduardo was here
+                }
+
+                if(progressBar != null)
+                {
+                    progressBar.Value = currentHP;
+                }
+                if(hpLabel != null)
+                {
+                    hpLabel.Text = currentHP.ToString();
                 }
             }
         }
 
         public int CurrentAttack 
         { 
-            get => CurrentAttack;
-            set => CurrentAttack = value;
+            get => currentAttack;
+            set => currentAttack = value;
         }
 
         public int CurrentDefense
         {
-           get => CurrentDefense;
-            set => CurrentDefense = value;
+           get => currentDefense;
+            set => currentDefense = value;
         }
 
         public int MaxHP
@@ -91,16 +119,24 @@ namespace PokemonForms
             private set => type = value;
         }
 
+        public int CurrentSpeed { get => currentSpeed; set => currentSpeed = value; }
+
+        public int Speed { get => speed; private set => speed = value; }
+        public Image FrontImage { get => frontImage; private set => frontImage = value; }
+        public Image BackImage { get => backImage; private set => backImage = value; }
+
         private Pokemon(string name, PokemonHelper.PokemonType type1, int hpBase, int attackBase,
-            int defenseBase, int velocityBase, IMove[] move)
+            int defenseBase, int velocityBase, IMove[] move, Bitmap front, Bitmap back)
         {
             this.name = name;
             type = type1;
             maxHP = hpBase;
             attack = attackBase;
             defense = defenseBase;
-            velocity = velocityBase;
+            speed = velocityBase;
             moves = move;
+            frontImage = front;
+            backImage = back;
         }
 
         private Pokemon (Pokemon other)
@@ -110,14 +146,15 @@ namespace PokemonForms
             this.maxHP = other.maxHP;
             this.attack = other.attack;
             this.defense = other.defense;
-            this.velocity = other.velocity;
+            this.speed = other.speed;
             this.moves = other.moves;
+            this.frontImage = other.frontImage;
+            this.backImage = other.backImage;
         }
 
         public static Pokemon GeneratePokemon(int pokedexIndex, int level)
         {
-            var pkm =  new Pokemon(pokedex[pokedexIndex]);
-            pkm.level = level;
+            var pkm = new Pokemon(pokedex[pokedexIndex]) { level = level };
             CalculateStats(pkm);
             return pkm;
         }
@@ -127,7 +164,7 @@ namespace PokemonForms
             pokemon.maxHP = (int)Math.Floor((2 * pokemon.maxHP) * pokemon.level / 100f) + pokemon.level + 10;
             pokemon.attack = (int)Math.Floor((2 * pokemon.attack) * pokemon.level / 100f) + 5;
             pokemon.defense = (int)Math.Floor((2 * pokemon.defense) * pokemon.level / 100f) + 5;
-            pokemon.velocity = (int)Math.Floor((2 * pokemon.velocity) * pokemon.level / 100f) + 5;
+            pokemon.speed = (int)Math.Floor((2 * pokemon.speed) * pokemon.level / 100f) + 5;
         }
 
         public IMove GetMove(int index)
@@ -137,7 +174,31 @@ namespace PokemonForms
 
         public void PerformMove(int moveIndex, Pokemon foe)
         {
-            moves[moveIndex].PerformMove(this, foe);
+            if(sleep)
+            {
+                if (new Random().Next(0, 2) == 0)
+                {
+                    sleep = false;
+                }
+            }
+            if(!sleep)
+            {
+                moves[moveIndex].PerformMove(this, foe);
+            }
+        }
+
+        public void ResetStats()
+        {
+            currentAttack = 0;
+            currentDefense = 0;
+            currentSpeed = 0;
+            currentHP = maxHP;
+        }
+
+        public void SetControls(ProgressBar progressBar,Label hpLabel = null)
+        {
+            this.progressBar = progressBar;
+            this.hpLabel = hpLabel;
         }
     }
 }

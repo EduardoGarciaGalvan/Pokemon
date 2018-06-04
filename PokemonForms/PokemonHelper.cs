@@ -28,7 +28,15 @@ namespace PokemonForms
 
         public static int DoDamage(Pokemon attackPkm, Pokemon defendPkm, IMove move)
         {
-            double Damage = (((double)2 * attackPkm.Level / 5) * move.Power * ((double)attackPkm.CurrentAttack / defendPkm.CurrentDefense) / 50) + 2;
+            double Attack = attackPkm.Attack;
+            if (attackPkm.CurrentAttack > 0) Attack *= ((2.0 + attackPkm.CurrentAttack) / 2);
+            else if(attackPkm.CurrentAttack < 0) Attack *= (2 / (2.0 + (attackPkm.CurrentAttack * -1)));
+
+            double Defense = defendPkm.Defense;
+            if (defendPkm.CurrentDefense > 0) Defense *= ((2.0 + defendPkm.CurrentDefense) / 2);
+            else if (defendPkm.CurrentDefense < 0) Defense *= (2 / (2.0 + (defendPkm.CurrentDefense * -1)));
+
+            double Damage = (((double)2 * attackPkm.Level / 5) * move.Power * (Attack / Defense) / 50) + 2;
             Damage *= new Random().NextDouble() * 0.25 + 0.85; // Random
             Damage *= (attackPkm.Type == move.Type) ? 1.5 : 1; // STAB
             Damage *= Effective(move.Type, defendPkm.Type); //Type Effectiveness
