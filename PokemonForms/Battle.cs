@@ -64,11 +64,31 @@ namespace PokemonForms
             FoePokemon.ResetStats();
         }
 
+        private void ActiveButtons()
+        {
+
+            btnAttack.Enabled = true;
+            btnDefender.Enabled = true;
+            btnHeal.Enabled = true;
+            btnRun.Enabled = true;
+        }
+
+        private void DesactiveButtons()
+        {
+            btnAttack.Enabled = false;
+            btnDefender.Enabled = false;
+            btnHeal.Enabled = false;
+            btnRun.Enabled = false;
+        }
+
         private void BtnAttack_Click(object sender, EventArgs e)
         {
-            if(ThisPokemon.Speed >= FoePokemon.Speed )
+            DesactiveButtons();
+            if (ThisPokemon.Speed >= FoePokemon.Speed)
             {
+                TimeHandler time;
                 ThisPokemon.PerformMove(0, FoePokemon);
+                
                 FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon);
             }
             else
@@ -76,16 +96,20 @@ namespace PokemonForms
                 FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon);
                 ThisPokemon.PerformMove(0, FoePokemon);
             }
+            ActiveButtons();
         }
 
         private void BtnHeal_Click(object sender, EventArgs e)
         {
+            DesactiveButtons();
             ThisPokemon.CurrentHP += 200;
             FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon);
+            ActiveButtons();
         }
 
         private void BtnDefender_Click(object sender, EventArgs e)
         {
+            DesactiveButtons();
             if (ThisPokemon.Speed >= FoePokemon.Speed)
             {
                 ThisPokemon.PerformMove(1, FoePokemon);
@@ -96,6 +120,7 @@ namespace PokemonForms
                 FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon);
                 ThisPokemon.PerformMove(1, FoePokemon);
             }
+            ActiveButtons();
         }
 
         private void BtnRun_Click(object sender, EventArgs e)

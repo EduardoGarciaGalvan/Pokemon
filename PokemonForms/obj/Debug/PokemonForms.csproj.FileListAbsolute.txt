@@ -4,7 +4,6 @@ C:\Users\S-55\source\repos\PokemonForms\PokemonForms\obj\Debug\PokemonForms.cspr
 C:\Users\S-55\source\repos\PokemonForms\PokemonForms\obj\Debug\PokemonForms.Form1.resources
 C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\PokemonForms.csprojResolveAssemblyReference.cache
 C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\PokemonForms.Form1.resources
-C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\NesimoProyecto.Properties.Resources.resources
 C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\PokemonForms.csproj.GenerateResource.cache
 C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\PokemonForms.csproj.CoreCompileInputs.cache
 C:\Users\S-55\source\repos\PokemonForms\PokemonForms\bin\Debug\PokemonForms.exe.config
@@ -13,3 +12,9 @@ C:\Users\S-55\source\repos\PokemonForms\PokemonForms\bin\Debug\PokemonForms.pdb
 C:\Users\S-55\source\repos\PokemonForms\PokemonForms\obj\Debug\PokemonForms.Properties.Resources.resources
 C:\Users\S-55\source\repos\PokemonForms\PokemonForms\obj\Debug\PokemonForms.exe
 C:\Users\S-55\source\repos\PokemonForms\PokemonForms\obj\Debug\PokemonForms.pdb
+C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\bin\Debug\PokemonForms.exe.config
+C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\bin\Debug\PokemonForms.exe
+C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\bin\Debug\PokemonForms.pdb
+C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\PokemonForms.Properties.Resources.resources
+C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\PokemonForms.exe
+C:\Users\Eduardo\Documents\GitHub\Pokemon\PokemonForms\obj\Debug\PokemonForms.pdb

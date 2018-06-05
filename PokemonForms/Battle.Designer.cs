@@ -591,8 +591,9 @@
             this.ClientSize = new System.Drawing.Size(842, 631);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Pokemon Forms";
+            this.Text = "Pokemon";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
