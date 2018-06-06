@@ -57,6 +57,8 @@ namespace PokemonForms
             lblMyPkm.Text = ThisPokemon.Name;
             lblFoePkm.Text = FoePokemon.Name;
 
+            lblBattleMessage.Text = null;
+
             picMyPkm.Image = ThisPokemon.BackImage;
             picFoePkm.Image = FoePokemon.FrontImage;
 
@@ -71,6 +73,7 @@ namespace PokemonForms
             btnDefender.Enabled = true;
             btnHeal.Enabled = true;
             btnRun.Enabled = true;
+            lblBattleMessage.Text = null;
         }
 
         private void DesactiveButtons()
@@ -81,52 +84,106 @@ namespace PokemonForms
             btnRun.Enabled = false;
         }
 
-        private void BtnAttack_Click(object sender, EventArgs e)
+        private async void BtnAttack_Click(object sender, EventArgs e)
         {
             DesactiveButtons();
             if (ThisPokemon.Speed >= FoePokemon.Speed)
             {
-                TimeHandler time;
-                ThisPokemon.PerformMove(0, FoePokemon);
-                
-                FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon);
+                BattleMessage(ThisPokemon.PerformMove(0, FoePokemon));
+                await Delay();
+
+                BattleMessage(FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon));
+                await Delay();
             }
             else
             {
-                FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon);
-                ThisPokemon.PerformMove(0, FoePokemon);
+                BattleMessage(FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon));
+                await Delay();
+
+                BattleMessage(ThisPokemon.PerformMove(0, FoePokemon));
+                await Delay();
             }
             ActiveButtons();
+            GetHP();
         }
 
-        private void BtnHeal_Click(object sender, EventArgs e)
+        private async void BtnHeal_Click(object sender, EventArgs e)
         {
             DesactiveButtons();
             ThisPokemon.CurrentHP += 200;
             FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon);
+            MessageHeal(ThisPokemon);
+            await Delay();
             ActiveButtons();
+            GetHP();
         }
 
-        private void BtnDefender_Click(object sender, EventArgs e)
+        private async void BtnDefender_Click(object sender, EventArgs e)
         {
             DesactiveButtons();
             if (ThisPokemon.Speed >= FoePokemon.Speed)
             {
-                ThisPokemon.PerformMove(1, FoePokemon);
-                FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon);
+                BattleMessage(ThisPokemon.PerformMove(1, FoePokemon));
+                await Delay();
+                BattleMessage(FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon));
+                await Delay();
             }
             else
             {
-                FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon);
-                ThisPokemon.PerformMove(1, FoePokemon);
+                BattleMessage(FoePokemon.PerformMove(new Random().Next(0, 2), ThisPokemon));
+                await Delay();
+                BattleMessage(ThisPokemon.PerformMove(1, FoePokemon));
+                await Delay();
             }
             ActiveButtons();
+            GetHP();
         }
 
-        private void BtnRun_Click(object sender, EventArgs e)
+        private async void BtnRun_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("You fled like a coward.");
+            BattleMessage("You fled like a coward.");
+            await Delay();
             this.Close();
+        }
+
+        private void BattleMessage(String msg)
+        {
+            lblBattleMessage.Text = msg;
+        }
+
+        private void MessageHeal(Pokemon pokemon1)
+        {
+            BattleMessage("Has usado pocion sobre " + pokemon1.Name);
+        }
+
+        public static Task Delay()
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            var timer = new System.Threading.Timer(o => tcs.SetResult(false));
+            timer.Change(2000, -1);
+            return tcs.Task;
+        }
+
+        public void GetHP()
+        {
+            if(ThisPokemon.CurrentHP <= 0 || FoePokemon.CurrentHP <= 0)
+            {
+                DesactiveButtons();
+                btnAttack.Visible = false;
+                btnDefender.Visible = false;
+                btnHeal.Visible = false;
+                btnRun.Visible = false;
+                if (ThisPokemon.CurrentHP <= 0)
+                {
+                    BattleMessage (FoePokemon.Name + " ha ganado");
+                    picMyPkm.Visible = false;
+                }
+                else if (FoePokemon.CurrentHP <= 0)
+                {
+                    BattleMessage(ThisPokemon.Name + " ha ganado");
+                    picFoePkm.Visible = false;
+                }
+            }
         }
     }
 }

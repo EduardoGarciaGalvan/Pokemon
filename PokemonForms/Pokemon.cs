@@ -172,19 +172,23 @@ namespace PokemonForms
             return moves[index];
         }
 
-        public void PerformMove(int moveIndex, Pokemon foe)
+        public string PerformMove(int moveIndex, Pokemon foe)
         {
+            string msg = "";
             if(sleep)
             {
                 if (new Random().Next(0, 2) == 0)
                 {
+                    msg += Name + " se ha despertado\n";
                     sleep = false;
                 }
+                else msg += Name + " esta dormido";
             }
             if(!sleep)
             {
-                moves[moveIndex].PerformMove(this, foe);
+                msg += moves[moveIndex].PerformMove(this, foe);
             }
+            return msg;
         }
 
         public void ResetStats()

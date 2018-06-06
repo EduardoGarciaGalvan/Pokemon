@@ -574,7 +574,7 @@
             this.lblBattleMessage.AutoSize = true;
             this.lblBattleMessage.BackColor = System.Drawing.Color.Transparent;
             this.lblBattleMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBattleMessage.Font = new System.Drawing.Font("Bahnschrift", 14F);
+            this.lblBattleMessage.Font = new System.Drawing.Font("Bahnschrift", 12F);
             this.lblBattleMessage.ForeColor = System.Drawing.Color.White;
             this.lblBattleMessage.Location = new System.Drawing.Point(59, 36);
             this.lblBattleMessage.Name = "lblBattleMessage";

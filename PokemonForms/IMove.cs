@@ -10,7 +10,7 @@ namespace PokemonForms
     {
         PokemonHelper.PokemonType Type { get; }
         int Power { get; }
-        void PerformMove(Pokemon ThisPkm, Pokemon FoePkm);
+        string PerformMove(Pokemon ThisPkm, Pokemon FoePkm);
     }
 
     public class Slash : IMove
@@ -18,9 +18,10 @@ namespace PokemonForms
         public PokemonHelper.PokemonType Type { get => PokemonHelper.PokemonType.Normal; }
         public int Power { get => 70; }
 
-        public void PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
+        public string PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
         {
             PokemonHelper.DoDamage(ThisPkm, FoePkm, this);
+            return ThisPkm.Name + " ha usado Slash";
         }
     }
 
@@ -28,7 +29,7 @@ namespace PokemonForms
     {
         public PokemonHelper.PokemonType Type { get => PokemonHelper.PokemonType.Steel; }
         public int Power { get => 80; }
-        public void PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
+        public string PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
         {
             PokemonHelper.DoDamage(ThisPkm, FoePkm, this);
             if(new Random().Next(0,10) == 0)
@@ -36,6 +37,7 @@ namespace PokemonForms
                 if(FoePkm.CurrentDefense > -6)
                     FoePkm.CurrentDefense--;
             }
+            return ThisPkm.Name + " ha usado Flash Cannon";
         }
     }
 
@@ -43,11 +45,12 @@ namespace PokemonForms
     {
         public PokemonHelper.PokemonType Type { get => PokemonHelper.PokemonType.Normal; }
         public int Power { get => 90; }
-        public void PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
+        public string PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
         {
             int damage;
             damage = PokemonHelper.DoDamage(ThisPkm, FoePkm, this);
             ThisPkm.CurrentHP -= damage / 4;
+            return ThisPkm.Name + " ha usado Take Down";
         }
     }
 
@@ -55,10 +58,11 @@ namespace PokemonForms
     {
         public PokemonHelper.PokemonType Type { get => PokemonHelper.PokemonType.Normal; }
         public int Power { get => 0; }
-        public void PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
+        public string PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
         {
             if (FoePkm.CurrentAttack > -6)
                 FoePkm.CurrentAttack--;
+            return ThisPkm.Name + " ha usado Growl";
         }
     }
 
@@ -66,10 +70,11 @@ namespace PokemonForms
     {
         public PokemonHelper.PokemonType Type { get => PokemonHelper.PokemonType.Water; }
         public int Power { get => 0; }
-        public void PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
+        public string PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
         {
             if (ThisPkm.CurrentDefense < 6)
                 ThisPkm.CurrentDefense++;
+            return ThisPkm.Name + " ha usado Withdraw";
         }
     }
 
@@ -77,9 +82,10 @@ namespace PokemonForms
     {
         public PokemonHelper.PokemonType Type { get => PokemonHelper.PokemonType.Grass; }
         public int Power { get => 0; }
-        public void PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
+        public string PerformMove(Pokemon ThisPkm, Pokemon FoePkm)
         {
             FoePkm.sleep = true;
+            return ThisPkm.Name + " ha usado Sleep Powder\n" + FoePkm.Name + " se a dormido";
         }
     }
 }
